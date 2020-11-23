@@ -12,7 +12,9 @@ if (isset($_POST['radio'])) {
 <?php 
  		$conn = mysqli_connect('localhost','cjuradog','P@ssw0rd');
  		mysqli_select_db($conn, 'world');
- 		$consulta = "SELECT Name , CountryCode FROM city WHERE CountryCode="."'$radio;'";
+ 		$consulta = "SELECT c.Name as CityName,co.Name as CountryName,c.District,c.Population FROM city c inner join country co on c.CountryCode=co.Code where c.CountryCode='".$radio."';";
+
+ 		//$consulta = "SELECT c.Name as CityName , co.Name as CountryName , c.CountryCode as CountryCode FROM city  c , country co WHERE co.code=c.CountryCode and c.CountryCode='".$radio."';";
 		$resultat = mysqli_query($conn, $consulta);
 
  		
@@ -27,17 +29,17 @@ if (isset($_POST['radio'])) {
 
  	<?php
 
-
+		
  		while( $registre = mysqli_fetch_assoc($resultat) )
  		{
-
 					echo "\t<tr>\n";
-					echo "\t\t<td>".$registre["Name"]."</td>";
+					echo "\t\t<td>".$registre["CityName"]."</td>";
+					echo "\t\t<td>".$registre["CountryName"]."</td>";
 					echo "\t</tr>\n";
  		}
  	
 
-echo"<p>$radio</p>";
+
  ?>
 </table>
 </body>

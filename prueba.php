@@ -10,7 +10,6 @@
  		}
  	</style>
  </head>
- 
  <body>
  	<h1>Exemple de lectura de dades a MySQL</h1>
  	<?php
@@ -56,10 +55,8 @@
  			
  			
  				echo "\t\t<td>".$registre["Name"]."</td>";
- 				echo "<td><input type='radio' name='radio' value=".$registre['Code']."></td>\n";
- 			
- 			
- 
+ 				echo "<td><input type='radio' name='radio' value=".$registre['Code']."></td>";				
+ 				echo "<td><img src=\"https://www.countryflags.io/".strtolower($registre['Code2'])."/shiny/24.png\" /></td>";
  			# (3.5) tanquem la fila
  			echo "\t</tr>\n";
  		}
